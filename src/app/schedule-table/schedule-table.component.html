@@ -1,0 +1,13 @@
+<div class="table">
+    <table class="schedule-table" *ngIf="titles && titles.length">
+        <tr>
+            <th></th>
+            <th *ngFor="let title of titles">{{ title }}</th>
+        </tr>
+
+        <tr *ngFor="let interval of intervals">
+            <th>{{ interval }}</th>
+
+        </tr>
+    </table>
+</div>
