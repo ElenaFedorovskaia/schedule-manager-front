@@ -10,10 +10,13 @@ import { IScheduleTable } from "./schedule-table";
     providers: [ScheduleTableService]
 })
 export class ScheduleTableComponent {
+    selectedTitle: string;
+    selectedInterval: string;
     titles: string[];
     intervals: string[];
     private _scheduleTable: IScheduleTable;
     errorMessage: string;
+
 
     constructor(private _scheduleTableService: ScheduleTableService) {
     }
@@ -28,11 +31,14 @@ export class ScheduleTableComponent {
 
     }
 
+    clickCell(title: any, interval: any){
+        this.selectedTitle = title;
+        this.selectedInterval = interval;
+     }
+
     getIntervals(scheduleTable: IScheduleTable): string[] {
         let sTime = moment(scheduleTable.startTime, 'LT');
         let eTime = moment(scheduleTable.endTime, 'LT');
-        // console.log(scheduleTable);
-        // let result = ["9:00 AM","9:30 AM"];
         var result: string[] = [];
         result.push(sTime.format('LT'));
         var time = sTime.clone();

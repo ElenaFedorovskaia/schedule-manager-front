@@ -1,13 +1,19 @@
 <div class="table">
-    <table class="schedule-table" *ngIf="titles && titles.length">
+    <table class="schedule-table" *ngIf="titles && titles.length && intervals && intervals.length">
         <tr>
-            <th></th>
-            <th *ngFor="let title of titles">{{ title }}</th>
+            <th class="vertical-header-cell"></th>
+            <th class="horizontal-header-cell" *ngFor="let title of titles">{{ title }}</th>
         </tr>
-
         <tr *ngFor="let interval of intervals">
-            <th>{{ interval }}</th>
-
+            <th class="vertical-header-cell">{{ interval }}</th>
+            <th class="body-cell" *ngFor="let title of titles" (click)="clickCell(title, interval);showDialog=!showDialog">
+                <p class="cell-description">{{ interval }}</p>
+            </th>
         </tr>
     </table>
 </div>
+
+<modal [(visible)]="showDialog">
+    <div class="description">Would you like to book {{ selectedTitle }} on {{ selectedInterval }}?</div>
+    <button (click)="showDialog = !showDialog" class="btn">Ok</button>
+</modal>
