@@ -1,7 +1,9 @@
-import { Component } from "../../../node_modules/@angular/core";
+import { Component, ViewChild } from "../../../node_modules/@angular/core";
 import { ScheduleTableService } from "./schedule-table.service";
 import * as moment from 'moment';
 import { IScheduleTable } from "./schedule-table";
+import { DatePickerComponent } from "../datepicker/datepicker.component";
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'schedule-table',
@@ -10,6 +12,8 @@ import { IScheduleTable } from "./schedule-table";
     providers: [ScheduleTableService]
 })
 export class ScheduleTableComponent {
+    @ViewChild(DatePickerComponent) datepicker: DatePickerComponent;
+    selectedDate: string;
     selectedTitle: string;
     selectedInterval: string;
     titles: string[];
@@ -18,7 +22,7 @@ export class ScheduleTableComponent {
     errorMessage: string;
 
 
-    constructor(private _scheduleTableService: ScheduleTableService) {
+    constructor(private _scheduleTableService: ScheduleTableService, private datepipe: DatePipe) {
     }
 
     ngOnInit(): void {
@@ -34,6 +38,8 @@ export class ScheduleTableComponent {
     clickCell(title: any, interval: any){
         this.selectedTitle = title;
         this.selectedInterval = interval;
+        this.selectedDate = this.datepipe.transform(this.datepicker.getDate(), 'MMMM d, y');        
+        console.log(this.selectedDate);
      }
 
     getIntervals(scheduleTable: IScheduleTable): string[] {
@@ -50,5 +56,6 @@ export class ScheduleTableComponent {
 
         return result;
     }
+
 }
 

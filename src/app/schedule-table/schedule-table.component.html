@@ -1,3 +1,6 @@
+<div class="options-container">
+    <datepicker></datepicker>
+</div>
 <div class="table">
     <table class="schedule-table" *ngIf="titles && titles.length && intervals && intervals.length">
         <tr>
@@ -14,6 +17,6 @@
 </div>
 
 <modal [(visible)]="showDialog">
-    <div class="description">Would you like to book {{ selectedTitle }} on {{ selectedInterval }}?</div>
+    <div class="description">Would you like to book {{ selectedTitle }} on {{ selectedDate }}, {{ selectedInterval }}?</div>
     <button (click)="showDialog = !showDialog" class="btn">Ok</button>
 </modal>

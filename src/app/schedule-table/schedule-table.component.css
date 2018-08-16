@@ -1,6 +1,5 @@
 table {
     width: 100%;
-    margin-top: 100px;
     border-collapse: collapse;
 }
 
@@ -44,11 +43,12 @@ table, th, td {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 80%;
 }
 
 .btn {
     position: absolute;
-    bottom: 5%;
+    bottom: -5%;
     left: 50%;
     width: 10vh;
     height: 5vh;
@@ -57,4 +57,9 @@ table, th, td {
     background-color: #5cb85c;
     border-color: #4cae4c;
     border-radius: 5px;
+}
+
+.options-container {
+    display: block;
+    padding-bottom: 0.5vh;
 }

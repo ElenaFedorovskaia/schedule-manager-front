@@ -18,7 +18,7 @@ export class ScheduleTableService {
             "id": 1,
             "startTime": "09:00:00",
             "endTime": "18:00:00",
-            "span": 60,
+            "span": 30,
             "titles": "Room 1;Room 2; Room 3; Room 4"
         }
 
